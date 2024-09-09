@@ -1,4 +1,4 @@
-﻿using AppwithRoles.Models;
+﻿using InventoryManagementSystem.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +7,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace AppwithRoles.Controllers
+namespace InventoryManagementSystem.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace AppwithRoles.Migrations
+namespace InventoryManagementSystem.Migrations
 {
     [DbContext(typeof(AppContext))]
     [Migration("20240823193744_Init")]

@@ -1,4 +1,4 @@
-﻿namespace AppwithRoles.Models
+﻿namespace InventoryManagementSystem.Models
 {
     public class Login
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using InventoryManagementSystem.Models;
-using AppwithRoles.Data;
+using InventoryManagementSystem.Data;
 using System.Linq;
 
 namespace InventoryManagementSystem.Controllers

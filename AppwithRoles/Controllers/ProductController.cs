@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using AppwithRoles.Data;
+using InventoryManagementSystem.Data;
 using InventoryManagementSystem.Models;
 using System.Threading.Tasks;
 

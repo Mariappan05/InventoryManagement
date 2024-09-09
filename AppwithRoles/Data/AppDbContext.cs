@@ -3,7 +3,7 @@ using InventoryManagementSystem.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 
-namespace AppwithRoles.Data
+namespace InventoryManagementSystem.Data
 {
     public class AppDbContext : IdentityDbContext<IdentityUser>
     {

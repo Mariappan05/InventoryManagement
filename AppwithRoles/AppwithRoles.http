@@ -1,6 +1,6 @@
-@AppwithRoles_HostAddress = http://localhost:5250
+@InventoryManagementSystem_HostAddress = http://localhost:5250
 
-GET {{AppwithRoles_HostAddress}}/weatherforecast/
+GET {{InventoryManagementSystem_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace AppwithRoles.Migrations
+namespace InventoryManagementSystem.Migrations
 {
     [DbContext(typeof(AppContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot
