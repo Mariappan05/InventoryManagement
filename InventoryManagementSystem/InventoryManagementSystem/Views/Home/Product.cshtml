@@ -1,0 +1,140 @@
+﻿@model dynamic
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Creation - Inventory Management</title>
+    <link rel="stylesheet" href="~/css/styles.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Form Container */
+        .product-container {
+            width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: #fff;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #218838;
+            }
+
+        #error-message {
+            color: red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="product-container">
+        <h2>Register New Product</h2>
+        <form id="productForm">
+            <label for="productId">Product ID:</label>
+            <input type="text" id="productId" name="productId" required>
+
+            <label for="productName">Product Name:</label>
+            <input type="text" id="productName" name="productName" required>
+
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" required>
+
+            <label for="entryDate">Date of Entry:</label>
+            <input type="date" id="entryDate" name="entryDate" required>
+
+            <label for="stockQuantity">Product Quantity:</label>
+            <input type="number" id="stockQuantity" name="stockQuantity" required>
+
+            <button type="submit">Register Product</button>
+        </form>
+        <p id="error-message"></p>
+    </div>
+
+    <script>
+        document.getElementById('productForm').addEventListener('submit', async function(event) {
+            debugger;
+            event.preventDefault(); // Prevent default form submission
+
+            const productData = {
+                productId: document.getElementById('productId').value,
+                productName: document.getElementById('productName').value,
+                price: parseFloat(document.getElementById('price').value),
+                entryDate: document.getElementById('entryDate').value,
+                stockQuantity: parseInt(document.getElementById('stockQuantity').value)
+            };
+
+            try {
+                const response = await fetch('https://localhost:7137/api/Product/RegisterProduct', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(productData)
+                });
+
+                // Check if the response is JSON
+                const contentType = response.headers.get("content-type");
+                if (contentType && contentType.indexOf("application/json") !== -1) {
+                    const result = await response.json();
+
+                    if (response.ok) {
+                        alert(result.message);
+                        // Clear form or redirect
+                        document.getElementById('productForm').reset();
+                    } else {
+                        document.getElementById('error-message').textContent = result.message;
+                    }
+                } else {
+                    // The response is not JSON, log the raw response for debugging
+                    const text = await response.text();
+                    console.error('Unexpected response format:', text);
+                    document.getElementById('error-message').textContent = 'Unexpected response from the server.';
+                }
+            }
+             catch (error) {
+                console.error('Error:', error);
+                document.getElementById('error-message').textContent = 'An error occurred while saving the product.';
+            }
+        });
+
+    </script>
+</body>
+</html>
